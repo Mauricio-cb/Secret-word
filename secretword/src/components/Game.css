@@ -1,0 +1,13 @@
+.game h1 {
+  font-size: 2.5em;
+}
+
+.points span {
+  color: #ecfa00;
+}
+.wordContainer {
+  margin: 1.5em;
+  padding: 1.5 em;
+  border: 20px solid #ecfa00;
+  display: flex;
+}

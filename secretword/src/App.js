@@ -13,6 +13,7 @@ import { StartScreen } from "./components/StartScreen";
 import GameOver from "./components/GameOver";
 import Game from "./components/Game";
 
+//Estagios
 const stages = [
   {
     id: 1,
@@ -72,7 +73,7 @@ function App() {
   const verificarLetra = () => {
     setGameStage(stages[2].name);
   };
-
+  //reiniciar jogo
   const reiniciarJogo = () => {
     setGameStage(stages[0].name);
   };
