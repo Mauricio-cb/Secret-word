@@ -6,6 +6,7 @@ import "./App.css";
 import { useState, useCallback, useEffect } from "react";
 
 //Data
+import { wordsList } from "./data/data";
 
 //Componentes
 import { StartScreen } from "./components/StartScreen";
@@ -29,10 +30,41 @@ const stages = [
 
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name);
-  const [words] = useState([1, 2, 3]);
+  const [words] = useState(wordsList);
+
+  const [pickedWord, setPickedWord] = useState("");
+  const [pickedCategory, setPickedCategory] = useState("");
+  const [letters, setLetters] = useState("");
+
+  const pickWordAndCategory = () => {
+    //Pegar uma categoria aleatoria
+    const categories = Object.keys(words);
+    const category =
+      categories[Math.floor(Math.random() * Object.keys(categories).length)];
+    //Pegar uma palavra aleatoria
+    const word =
+      words[category][Math.floor(Math.random() * words[category].length)];
+
+    return { word, category };
+  };
 
   //Começar o jogo
   const startGame = () => {
+    //pega palavra e categoria
+    const { word, category } = pickWordAndCategory();
+
+    //Criar um array de letras
+    let wordLetters = word.split("");
+    wordLetters = wordLetters.map((l) => l.toLowerCase());
+
+    console.log(word, category);
+    console.log(wordLetters);
+
+    //settar estados
+    setPickedWord(word);
+    setPickedCategory(category);
+    setLetters(letters);
+
     setGameStage(stages[1].name);
   };
 
