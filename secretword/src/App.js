@@ -12,7 +12,7 @@ import { StartScreen } from "./components/StartScreen";
 import GameOver from "./components/GameOver";
 import Game from "./components/Game";
 
-const stage = [
+const stages = [
   {
     id: 1,
     name: "start",
@@ -28,7 +28,7 @@ const stage = [
 ];
 
 function App() {
-  const [gameStage, setGameStage] = useState([0].name);
+  const [gameStage, setGameStage] = useState(stages[0].name);
   const [words] = useState([1, 2, 3]);
 
   return (
