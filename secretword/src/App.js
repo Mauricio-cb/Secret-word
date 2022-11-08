@@ -31,11 +31,25 @@ function App() {
   const [gameStage, setGameStage] = useState(stages[0].name);
   const [words] = useState([1, 2, 3]);
 
+  //Começar o jogo
+  const startGame = () => {
+    setGameStage(stages[1].name);
+  };
+
+  //Processar o input das letras
+  const verificarLetra = () => {
+    setGameStage(stages[2].name);
+  };
+
+  const reiniciarJogo = () => {
+    setGameStage(stages[0].name);
+  };
+
   return (
     <div className="App">
-      {gameStage === "start" && <StartScreen />}
-      {gameStage === "game" && <Game />}
-      {gameStage === "end" && <GameOver />}
+      {gameStage === "start" && <StartScreen startGame={startGame} />}
+      {gameStage === "game" && <Game verificarLetra={verificarLetra} />}
+      {gameStage === "end" && <GameOver reiniciarJogo={reiniciarJogo} />}
     </div>
   );
 }
