@@ -5,13 +5,19 @@
 .points span {
   color: #ecfa00;
 }
+
+.tip span {
+  color: #ecfa00;
+}
+
 .wordContainer {
   margin: 1.5em;
   padding: 1.5 em;
   border: 20px solid #ecfa00;
   display: flex;
 }
-.letter, .blankSquare{
+.letter,
+.blankSquare {
   font-size: 70px;
   line-height: 1.5;
   border: 3px solid #000;
@@ -19,25 +25,24 @@
   width: 100px;
   text-transform: uppercase;
   background-color: #fff;
-  color:#000;
+  color: #000;
   font-weight: bold;
-  
 }
 
-.letterContainer p{
+.letterContainer p {
   margin-bottom: 2em;
 }
 
-.letterContainer form{
+.letterContainer form {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.letterContainer input{
+.letterContainer input {
   height: 50px;
   width: 50px;
-  font-size:2em;
-  text-align:center;
+  font-size: 2em;
+  text-align: center;
   margin-right: 1em;
 }
