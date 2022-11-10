@@ -43,7 +43,7 @@ function App() {
   const [guesses, setGuesses] = useState(guessesQtd);
   const [score, setScore] = useState(0);
 
-  const pickWordAndCategory = () => {
+  const pickWordAndCategory = useCallback(() => {
     //Pegar uma categoria aleatoria
     const categories = Object.keys(words);
     const category =
@@ -53,10 +53,13 @@ function App() {
       words[category][Math.floor(Math.random() * words[category].length)];
 
     return { word, category };
-  };
+  }, [words]);
 
   //Começar o jogo
-  const startGame = () => {
+  const startGame = useCallback(() => {
+    //Limpa todas as letras
+    clearLetterStates();
+
     //pega palavra e categoria
     const { word, category } = pickWordAndCategory();
 
@@ -64,17 +67,13 @@ function App() {
     let wordLetters = word.split("");
     wordLetters = wordLetters.map((l) => l.toLowerCase());
 
-    console.log(word, category);
-    console.log(wordLetters);
-
     //settar estados
     setPickedWord(word);
     setPickedCategory(category);
     setLetters(wordLetters);
 
-    console.log(letters + "aqui");
     setGameStage(stages[1].name);
-  };
+  }, [pickWordAndCategory]);
 
   //Processar o input das letras
   const verificarLetra = (letter) => {
@@ -108,17 +107,29 @@ function App() {
     setGameStage(stages[0].name);
   };
 
-  const clearLetterStage = () => {
+  const clearLetterStates = () => {
     setGuessedLetters([]);
     setWrongLetters([]);
   };
+  //verifica se as chances terminaram
   useEffect(() => {
     if (guesses <= 0) {
-      clearLetterStage();
+      clearLetterStates();
       //resertar todos os estagios
       setGameStage(stages[2].name);
     }
   }, [guesses]);
+  //verifoca condição de vitoria
+  useEffect(() => {
+    const uniqueLetters = [...new Set(letters)];
+    //
+    //condição de vitoria
+    if (guessedLetters.length === uniqueLetters.length) {
+      setScore((actualScore) => actualScore + 100);
+      //reiniciar o jogo com nova palavra
+      startGame();
+    }
+  }, [guessedLetters, letters, startGame]);
 
   return (
     <div className="App">
