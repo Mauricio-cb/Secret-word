@@ -1,6 +1,6 @@
 {
   "name": "secretword",
-  "homepage":"https://mauricio-cb.github.io/Secret-word/",
+  "homepage": "https://mauricio-cb.github.io/Secret-word/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

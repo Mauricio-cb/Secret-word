@@ -125,12 +125,15 @@ function App() {
     const uniqueLetters = [...new Set(letters)];
     //
     //condição de vitoria
-    if (guessedLetters.length === uniqueLetters.length) {
-      setScore((actualScore) => actualScore += 100);
-      //reiniciar o jogo com nova palavra
+     if (guessedLetters.length === uniqueLetters.length) {
+      // add score
+      setScore((actualScore) => (actualScore += 100));
+
+      // restart game with new word
       startGame();
     }
   }, [guessedLetters, letters, startGame]);
+
 
   return (
     <div className="App">
