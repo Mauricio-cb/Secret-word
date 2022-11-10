@@ -42,7 +42,7 @@ function App() {
   const [wrongLetters, setWrongLetters] = useState([]);
   const guessesQtd = 3;
   const [guesses, setGuesses] = useState(guessesQtd);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(-20);
 
   const pickWordAndCategory = useCallback(() => {
     //Pegar uma categoria aleatoria
@@ -127,7 +127,7 @@ function App() {
     //condição de vitoria
      if (guessedLetters.length === uniqueLetters.length) {
       // add score
-      setScore((actualScore) => (actualScore += 100));
+      setScore((actualScore) => (actualScore += 10));
 
       // restart game with new word
       startGame();
