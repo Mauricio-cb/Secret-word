@@ -126,7 +126,7 @@ function App() {
     //
     //condição de vitoria
     if (guessedLetters.length === uniqueLetters.length) {
-      setScore((actualScore) => actualScore + 100);
+      setScore((actualScore) => actualScore += 100);
       //reiniciar o jogo com nova palavra
       startGame();
     }
