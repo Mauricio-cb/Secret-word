@@ -23,7 +23,7 @@ const Game = ({
     <div>
       <div className="game">
         <p className="points">
-          <span>Pontuação:{score}</span>
+          <span>Pontuação:</span>{score}
         </p>
       </div>
       <h1>advinhe a palavra</h1>
