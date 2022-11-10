@@ -42,7 +42,6 @@ function App() {
   const guessesQtd = 3;
   const [guesses, setGuesses] = useState(guessesQtd);
   const [score, setScore] = useState(0);
- 
 
   const pickWordAndCategory = () => {
     //Pegar uma categoria aleatoria
@@ -136,7 +135,9 @@ function App() {
           score={score}
         />
       )}
-      {gameStage === "end" && <GameOver reiniciarJogo={reiniciarJogo} />}
+      {gameStage === "end" && (
+        <GameOver reiniciarJogo={reiniciarJogo} score={score} />
+      )}
     </div>
   );
 }
