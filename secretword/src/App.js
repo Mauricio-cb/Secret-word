@@ -39,8 +39,10 @@ function App() {
 
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [guesses, setGuesse] = useState(3);
+  const guessesQtd = 3;
+  const [guesses, setGuesses] = useState(guessesQtd);
   const [score, setScore] = useState(0);
+ 
 
   const pickWordAndCategory = () => {
     //Pegar uma categoria aleatoria
@@ -86,22 +88,38 @@ function App() {
     ) {
       return;
     }
-    if (letter.includes(normalizedLetter)) {
-      setGuessedLetters((actualGuesssedLetters) => [
-        ...actualGuesssedLetters,
-        normalizedLetter,
+    if (letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        letter,
       ]);
     } else {
       setWrongLetters((actualWrongLetters) => [
         ...actualWrongLetters,
         normalizedLetter,
       ]);
+
+      setGuesses((actualGuesses) => actualGuesses - 1);
     }
   };
   //reiniciar jogo
   const reiniciarJogo = () => {
+    setScore(0);
+    setGuesses(guessesQtd);
     setGameStage(stages[0].name);
   };
+
+  const clearLetterStage = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  };
+  useEffect(() => {
+    if (guesses <= 0) {
+      clearLetterStage();
+      //resertar todos os estagios
+      setGameStage(stages[2].name);
+    }
+  }, [guesses]);
 
   return (
     <div className="App">
